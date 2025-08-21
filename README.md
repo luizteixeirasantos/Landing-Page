@@ -35,11 +35,7 @@ Landing page criada para promover meus conhecimentos em criação e estruturaç�
 
 ## 🚀 Linguagens e Tecnologias Utilizadas
 
- <img align="center" alt="Luiz-JavaScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"> 
- <img align="center" alt="Luiz-HTML5" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
- <img align="center" alt="Luiz-CSS3" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-
-<br>
+<img align="center" alt="Luiz-JavaScript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"> <img align="center" alt="Luiz-HTML5" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"><img align="center" alt="Luiz-CSS3" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
 
 ---
 
@@ -187,3 +183,4 @@ git push origin minha-feature
 ## 📜 Licença
 
 Este projeto está sob a licença [MIT](LICENSE).
+
