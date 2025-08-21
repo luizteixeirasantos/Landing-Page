@@ -1,0 +1,21 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "Landing page criada para um site de vendas de computadores e notebooks",
+  "main": "src/javascript/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizteixeirasantos/Landing-Page.git"
+  },
+  "keywords": [],
+  "author": "Luiz H. Teixeira Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luizteixeirasantos/Landing-Page/issues"
+  },
+  "homepage": "https://github.com/luizteixeirasantos/Landing-Page#readme",
+  "dependencies": {}
+}
