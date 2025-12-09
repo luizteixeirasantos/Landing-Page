@@ -22,7 +22,7 @@ header {
 #nav_list {
   display: flex;
   list-style: none;
-  gap: 48px;
+  gap: 18px;
 }
 
 .nav-item a {
@@ -45,6 +45,7 @@ header {
 }
 
 @media screen and (max-width: 1170px) {
+
   #nav_list,
   #navbar .btn-default {
     display: none;
@@ -74,5 +75,17 @@ header {
   #mobile_nav_list .nav-item {
     list-style: none;
     text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    header {
+      padding: 20px 5%;
+      /* Reduz de 8% para 5% */
+    }
+
+    #nav_logo {
+      font-size: 1.2rem;
+      /* Diminui um pouco o logo */
+    }
   }
 }

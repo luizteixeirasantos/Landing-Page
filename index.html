@@ -46,7 +46,7 @@
           </li>
         </ul>
 
-        <div>
+        <div class="botoesSite">
           <button class="btn-default">
             <i class="fa-solid fa-user"></i>
             <strong>Minha Conta</strong>
@@ -60,43 +60,48 @@
           <button class="btn-default">
             <i class="fa-solid fa-cart-shopping"></i>
             <strong>Carrinho</strong>
-          </button>
-
-          <button id="mobile_btn">
-            <i class="fa-solid fa-bars"></i>
           </button>
         </div>
       </nav>
+      <div class="menu-hamburger">
+        <input type="checkbox" id="menu-toggle" hidden />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </label>
 
-      <div id="mobile_menu">
-        <ul id="mobile_nav_list">
-          <li class="nav-item active">
-            <a href="#home">Início</a>
-          </li>
-          <li class="nav-item">
-            <a href="#notebooks">Notebook</a>
-          </li>
-          <li class="nav-item">
-            <a href="#desktop">Desktop</a>
-          </li>
-          <li class="nav-item">
-            <a href="#testimonials">Avaliações</a>
-          </li>
-        </ul>
+        <div class="overlay">
+          <nav class="menu">
+            <ul>
+              <li>
+                <a href="#home">Inicio</a>
+              </li>
+              <li>
+                <a href="#notebooks">Notebook</a>
+              </li>
+              <li>
+                <a href="#desktop">Desktop</a>
+              </li>
+              <li>
+                <a href="#testimonials">Avaliações</a>
+              </li>
+            </ul>
 
-        <div>
-          <button class="btn-default">
-            <i class="fa-solid fa-user"></i>
-            <strong>Minha Conta</strong>
-          </button>
-          <button class="btn-default">
-            <i class="fa-solid fa-heart"></i>
-            <strong>Favoritos</strong>
-          </button>
-          <button class="btn-default">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <strong>Carrinho</strong>
-          </button>
+            <div class="botoesSite">
+              <button class="btn-default">
+                <i class="fa-solid fa-user"></i>
+              </button>
+
+              <button class="btn-default">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+
+              <button class="btn-default">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </nav>
         </div>
       </div>
     </header>
