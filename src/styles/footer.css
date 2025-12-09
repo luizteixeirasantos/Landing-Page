@@ -1,22 +1,45 @@
+:root {
+  --color-primary: #7b2ff7;
+  --color-primary-hover: #5a1bb4;
+  --color-secondary: #7305bd;
+  /* Tom mais escuro para destaque */
+  --color-dark: #0d0d0d;
+  --color-neutral-0: #2c2c2c;
+  /* Cor de fundo dos cards */
+  --color-light: #f5f5f5;
+  --color-light-gray: #cfcfcf;
+  --color-star: #ffcc00;
+  --color-home-background-start: #1f1c2c;
+  --color-home-background-end: #928dab;
+  --color-home-shape: #482d72;
+}
+
 footer {
   background-color: #b386fc;
+  /* Cor primária mais clara */
 }
 
 #footer_items {
   display: flex;
   justify-content: space-between;
-  padding: 0px 8% 24px 8%;
+  padding: 20px 8%;
+  /* Ajustado o padding */
   align-items: center;
 }
 
 #copyright {
-  color: #f1f1f1;
+  color: var(--color-light);
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
-@media screen and (max-width: 600px) {
+/* O estilo para social-media-buttons está em style.css */
+
+/* ===== MEDIA QUERIES (footer.css) ===== */
+@media screen and (max-width: 767px) {
   #footer_items {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
+    padding: 20px 5%;
   }
 }

@@ -1,91 +1,116 @@
+:root {
+  --color-primary: #7b2ff7;
+  --color-primary-hover: #5a1bb4;
+  --color-secondary: #7305bd;
+  /* Tom mais escuro para destaque */
+  --color-dark: #0d0d0d;
+  --color-neutral-0: #2c2c2c;
+  /* Cor de fundo dos cards */
+  --color-light: #f5f5f5;
+  --color-light-gray: #cfcfcf;
+  --color-star: #ffcc00;
+  --color-home-background-start: #1f1c2c;
+  --color-home-background-end: #928dab;
+  --color-home-shape: #482d72;
+}
+
 header {
   width: 100%;
-  padding: 28px 8%;
+  padding: 20px 8%;
+  /* Ajustado o padding vertical */
   position: sticky;
   top: 0;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  z-index: 3;
+  background: linear-gradient(135deg,
+      var(--color-home-background-start),
+      var(--color-home-background-end));
+  z-index: 100;
+  /* Prioridade máxima para o header */
 }
 
 #navbar {
   width: 100%;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+
   justify-content: space-between;
 }
 
 #nav_logo {
   font-size: 24px;
-  color: #f1f1f1;
+  color: var(--color-light);
+  font-weight: 700;
 }
 
 #nav_list {
   display: flex;
   list-style: none;
-  gap: 18px;
+  gap: 24px;
+  /* Aumentado o gap para melhor espaçamento */
 }
 
 .nav-item a {
   text-decoration: none;
-  color: #f1f1f1;
-  font-weight: 600;
+  color: var(--color-light);
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .nav-item.active a {
-  color: #f1f1f1;
+  color: var(--color-light);
   border-bottom: 3px solid #b386fc;
 }
 
-#mobile_btn {
+.nav-item a:hover {
+  color: #b386fc;
+}
+
+.botoesSite {
+  display: flex;
+  gap: 12px;
+}
+
+.botoesSite .btn-default {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+/* Oculta o botão mobile e o menu mobile no desktop */
+.menu-hamburger {
   display: none;
 }
 
-#mobile_menu {
-  display: none;
-}
+/* ===== MEDIA QUERIES (header.css) ===== */
 
+/* Tablet e Mobile (Abaixo de 1170px) */
 @media screen and (max-width: 1170px) {
 
+  /* Esconde o menu de desktop e botões */
   #nav_list,
-  #navbar .btn-default {
+  .botoesSite {
     display: none;
   }
 
-  #mobile_btn {
+  /* Exibe o menu hamburger (definido em style.css/mobile) */
+  .menu-hamburger {
     display: block;
-    border: none;
-    background-color: transparent;
-    font-size: 1.5rem;
-    cursor: pointer;
+    /* Garante que o menu hamburger esteja visível */
+  }
+}
+
+/* Mobile (Abaixo de 767px) - Ajustes finais */
+@media screen and (max-width: 767px) {
+  header {
+    padding: 15px 5%;
+    /* Reduz o padding */
   }
 
-  #mobile_menu.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #nav_logo {
+    font-size: 1.4rem;
   }
 
-  #mobile_nav_list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 12px 0px;
-  }
-
-  #mobile_nav_list .nav-item {
-    list-style: none;
-    text-align: center;
-  }
-
-  @media screen and (max-width: 600px) {
-    header {
-      padding: 20px 5%;
-      /* Reduz de 8% para 5% */
-    }
-
-    #nav_logo {
-      font-size: 1.2rem;
-      /* Diminui um pouco o logo */
-    }
-  }
+  /* O menu hamburger está sendo tratado no hamburgerMenu.css e style.css */
 }

@@ -1,11 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/* Importação de Componentes/Módulos */
 @import url("header.css");
 @import url("testimonials.css");
 @import url("footer.css");
 @import url("hamburgerMenu.css");
+/* Mantido para conter a lógica do menu mobile */
 
-/* ===== Reset ===== */
+/* ===== Variáveis de Cores (Opcional, mas recomendado) ===== */
+:root {
+  --color-primary: #7b2ff7;
+  --color-primary-hover: #5a1bb4;
+  --color-secondary: #7305bd;
+  /* Tom mais escuro para destaque */
+  --color-dark: #0d0d0d;
+  --color-neutral-0: #2c2c2c;
+  /* Cor de fundo dos cards */
+  --color-light: #f5f5f5;
+  --color-light-gray: #cfcfcf;
+  --color-star: #ffcc00;
+  --color-home-background-start: #1f1c2c;
+  --color-home-background-end: #928dab;
+  --color-home-shape: #482d72;
+}
+
+/* ===== Reset & Base Styles ===== */
 * {
   margin: 0;
   padding: 0;
@@ -14,8 +33,8 @@
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  background: #0d0d0d;
-  color: #f5f5f5;
+  background: var(--color-dark);
+  color: var(--color-light);
   line-height: 1.6;
 }
 
@@ -24,31 +43,71 @@ img {
   display: block;
 }
 
-/* ===== Botões ===== */
+/* Oculta os elementos do menu mobile por padrão para evitar quebra no desktop */
+.menu-hamburger {
+  display: none;
+}
+
+/* ===== Componentes Gerais ===== */
+
+/* Botões */
 .btn-default {
-  background: #7b2ff7;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-light);
   border: none;
-  padding: 6px 10px;
+  padding: 8px 16px;
+  /* Aumentado para melhor toque */
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
-  gap: 16px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: flex;
+  /* Para alinhar ícone e texto */
+  align-items: center;
+  gap: 8px;
+  /* Espaçamento entre ícone e texto */
 }
 
 .btn-default:hover {
-  background: #5a1bb4;
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
 }
 
-/* ===== Seções ===== */
+/* Títulos e Seções */
 section {
-  padding: 80px 10%;
+  padding: 80px 8%;
+  /* Centralizando o padding base */
   position: relative;
+  overflow: hidden;
+  /* Garante que o shape não cause scroll horizontal */
 }
 
+.section-title {
+  font-size: 2.5rem;
+  /* Ajuste leve no tamanho */
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-title span,
+.title span {
+  color: var(--color-secondary);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-light-gray);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Animações de Digitação */
+/* Removida a animação da descrição para o layout mobile. 
+A largura `width: 100ch` estava travando o layout em telas menores. */
 .title {
+  /* Mantido para a animação do título principal */
   width: 20ch;
   white-space: nowrap;
   overflow: hidden;
@@ -56,10 +115,11 @@ section {
 }
 
 .description {
-  width: 100ch;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 4s steps(70), blink 0.7s step-end infinite alternate;
+  width: auto;
+  white-space: normal;
+  overflow: visible;
+  animation: none;
+  /* Removida animação da descrição */
 }
 
 @keyframes typing {
@@ -74,35 +134,51 @@ section {
   }
 }
 
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
+/* Social media buttons */
+.social-media-buttons {
+  display: flex;
+  gap: 12px;
+  /* Reduzido o gap para melhor acomodação */
 }
 
-.section-title span,
-.title span {
-  color: #7305bd;
+.social-media-buttons a {
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centraliza o ícone */
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-light);
+  padding: 10px;
+  /* Padding igual para ser circular (se o border-radius for alto) */
+  border-radius: 50%;
+  /* Torna os botões circulares */
+  text-decoration: none;
+  font-size: 1.2rem;
+  /* Tamanho do ícone */
+  width: 45px;
+  /* Define um tamanho fixo */
+  height: 45px;
 }
 
-.section-subtitle {
-  font-size: 1rem;
-  color: #cfcfcf;
-  text-align: center;
-  margin-bottom: 40px;
+.social-media-buttons a:hover {
+  background: var(--color-primary);
+  transform: scale(1.1);
+  border: 2px solid transparent;
 }
 
-/* ===== Home ===== */
+/* ===== Seção Home (Hero) ===== */
 #home {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 40px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  background: linear-gradient(135deg,
+      var(--color-home-background-start),
+      var(--color-home-background-end));
   position: relative;
-  overflow: hidden;
 }
 
 #cta {
@@ -112,66 +188,51 @@ section {
 }
 
 #cta .title {
-  font-size: 4.5rem;
+  font-size: 4rem;
+  /* Levemente reduzido para caber melhor */
   font-weight: 700;
   margin-bottom: 20px;
-}
-
-#cta .title span {
-  color: #3f0368;
+  line-height: 1.2;
 }
 
 #cta .description {
   font-size: 1.1rem;
   margin-bottom: 30px;
-}
-
-#cta_buttons {
-  display: flex;
-  gap: 20px;
-}
-
-#phone_button {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: transparent;
-  border: 2px solid #7b2ff7;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-
-  max-width: fit-content;
-}
-
-#phone_button:hover {
-  background: #7b2ff7;
+  max-width: 500px;
+  /* Limita a largura para melhor leitura */
 }
 
 #banner {
   flex: 1;
   display: flex;
-  align-items: start;
-  justify-content: end;
-  width: 70%;
+  align-items: center;
+  justify-content: flex-end;
+  /* Alinha a imagem à direita */
+  width: 50%;
   z-index: 2;
+  min-width: 300px;
+}
+
+#banner img {
+  max-width: 100%;
+  height: auto;
 }
 
 .shape {
-  background-color: #482d72;
-  width: 50%;
+  background-color: var(--color-home-shape);
+  width: 55%;
+  /* Aumentado levemente */
   height: 100%;
   position: absolute;
   border-radius: 40% 30% 0% 20%;
   top: 0;
   right: 0;
   z-index: 1;
-  filter: blur(6px);
+  filter: blur(8px);
+  /* Aumentado o blur */
 }
 
-/* ===== notebooks + desktops ===== */
+/* ===== Seções Notebooks e Desktop (Produtos) ===== */
 
 #notebooks,
 #desktop {
@@ -179,15 +240,17 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  /* min-height: 100vh; Removido para permitir conteúdo mais curto */
 }
 
-/* ===== Grid Produtos (Notebooks + Desktops) ===== */
+/* Grid de Produtos */
 .products-grid,
 #pcsGamer {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  /* Adicionado para quebrar a linha em telas menores */
   gap: 24px;
   margin-top: 32px;
 }
@@ -198,215 +261,208 @@ section {
   flex-direction: column;
   align-items: center;
   border-radius: 20px;
-  gap: 18px;
-  width: 25%;
+  gap: 12px;
+  /* Espaçamento reduzido */
+  width: calc(25% - 18px);
+  /* 4 colunas */
+  min-width: 250px;
+  /* Garante que o card não fique muito estreito */
   padding: 20px;
-  background-color: #2c2c2c;
-  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-neutral-0);
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.img-product-nb,
-.img-product-pc {
-  max-width: 100%;
-  height: 67%;
+.noteGamer:hover,
+.pcGamer:hover {
+  transform: translateY(-5px);
 }
 
 .noteGamer img,
 .pcGamer img {
-  margin-bottom: 15px;
-  height: 300px;
-  margin: auto;
-  transition: transform 0.9s ease-in-out;
+  height: 250px;
+  /* Altura da imagem ajustada */
+  object-fit: contain;
+  /* Garante que a imagem caiba sem cortar */
+  margin: 0 auto 15px auto;
+  transition: transform 0.3s ease-in-out;
 }
 
 .noteGamer img:hover,
 .pcGamer img:hover {
   cursor: pointer;
-  transform: scale(1.05) translateY(-8px);
+  transform: scale(1.05);
+}
+
+.computer-title {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
 }
 
 .noteGamer-description,
 .pcGamer-description {
-  color: #f1f1f1;
+  color: var(--color-light-gray);
   text-align: center;
+  font-size: 0.9rem;
+  flex-grow: 1;
+  /* Permite que ocupe o espaço necessário */
 }
 
-/* Ícone star dos comentários e produtos */
+/* Ícone star dos produtos */
+.noteGamer-rate,
+.pcGamer-rate {
+  margin-top: 10px;
+}
+
 .noteGamer-rate i,
-.pcGamer-rate i,
-#star-comments {
-  color: #ffcc00;
-  margin: 0 2px;
+.pcGamer-rate i {
+  color: var(--color-star);
+  margin: 0 1px;
 }
 
+/* Preço e Botões de Ação */
 .noteGamer-price,
 .pcGamer-price {
+  width: 100%;
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.noteGamer-price,
-.pcGamer-price {
+.noteGamer-price span,
+.pcGamer-price span {
   font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--color-light);
+}
+
+.noteGamer-price .btn-default,
+.pcGamer-price .btn-default {
+  padding: 10px;
+  /* Botões menores para caberem no card */
+  margin-left: 10px !important;
+  /* Ajuste para o espaçamento */
+  gap: 0;
+  /* Remove gap para ser apenas o ícone */
 }
 
 /* Ícone star "produto premium" */
 .noteGamer-star,
 .pcGamer-star {
   position: absolute;
-  background-color: #7b2ff7;
+  background-color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.563rem;
-  color: #f1f1f1;
-  width: 70px;
-  height: 70px;
-  right: -10px;
-  top: -10px;
-  border-radius: 0px 37.5px 0px 42.5px;
+  font-size: 1rem;
+  /* Reduzido o tamanho */
+  color: var(--color-light);
+  width: 40px;
+  /* Reduzido o tamanho */
+  height: 40px;
+  right: 0;
+  top: 0;
+  border-radius: 0 10px 0 10px;
+  /* Ajustado para um visual mais clean */
 }
 
-/* Social media buttons */
-.social-media-buttons {
-  display: flex;
-  gap: 18px;
-}
+/* ===== MEDIA QUERIES (style.css) ===== */
 
-.social-media-buttons a {
-  transition: transform 0.7s ease-in-out;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: transparent;
-  border: 2px solid #7b2ff7;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  max-width: fit-content;
-}
+/* Tablet (Mínimo de 768px - Max de 1170px) */
+@media screen and (max-width: 1170px) {
 
-.social-media-buttons a:hover {
-  background: #7b2ff7;
-  transition: all 1s ease;
-  transform: scale(1.05) translateY(-8px);
-  border: 2px solid #0d0d0d;
-}
-
-/* ===== Responsividade ===== */
-/* MENU MOBILE (Simples) */
-@media (max-width: 768px) {
-
-  /* Ajuste de Padding Geral para Seções */
+  /* Seções */
   section {
-    padding: 50px 5%;
-    /* Diminui o padding lateral e vertical para mobile */
+    padding: 60px 5%;
   }
 
-  header {
-    padding: 20px 10%;
-    width: 100%;
-    height: auto;
+  .section-title {
+    font-size: 2rem;
   }
 
-  #navbar {
-    display: none;
+  /* Home */
+  #cta .title {
+    font-size: 3.5rem;
   }
 
-  /* === Ajustes da Seção Home === */
+  /* Produtos (2 colunas) */
+  .noteGamer,
+  .pcGamer {
+    width: calc(50% - 12px);
+    /* 2 colunas com espaço de 24px entre elas */
+  }
+}
+
+/* Mobile (Máximo de 767px) */
+@media screen and (max-width: 1170px) {
+
+  /* Menu Hamburger - Visível apenas em mobile */
+  .menu-hamburger {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Home */
   #home {
     flex-direction: column;
-    /* Empilha o CTA e o Banner */
-    align-items: center;
+    text-align: center;
+    padding-top: 120px;
+    /* Espaço para o header */
     min-height: auto;
-    /* Permite que o conteúdo defina a altura */
-    padding-top: 20px;
-    /* Adiciona um pequeno padding no topo */
-    padding-bottom: 50px;
   }
 
   #cta {
-    width: 100%;
     text-align: center;
-    /* Centraliza o texto */
-    flex: none;
-  }
-
-  /* Ajuste de Títulos e Descrições para mobile */
-  .title,
-  .description,
-  #cta .title,
-  #cta .description {
-    width: 100% !important;
-    white-space: normal;
-    animation: none;
-    /* Desabilita animação de digitação no mobile */
   }
 
   #cta .title {
     font-size: 2.5rem;
+    white-space: normal;
+    /* Desabilita a animação de largura */
+    animation: none;
     line-height: 1.2;
+    margin-bottom: 10px;
   }
 
   #cta .description {
     font-size: 1rem;
-    /* Não precisa de padding aqui, o padding da section já resolve */
     margin-bottom: 20px;
   }
 
-  /* Centraliza os botões de mídias sociais */
   .social-media-buttons {
     justify-content: center;
-    gap: 10px;
-    /* Reduz o espaço entre os botões */
+    margin-bottom: 40px;
   }
 
-  /* Ajuste do Banner */
   #banner {
     width: 90%;
-    /* Aumenta a largura do container da imagem */
     justify-content: center;
-    margin-top: 30px;
-    flex: none;
+    margin-top: 20px;
   }
 
   #banner img {
+    max-width: 80%;
     height: auto;
-    /* Garante que a altura seja auto para manter proporção */
   }
 
-  /* Ajuste da forma roxa no fundo */
   .shape {
-    height: 100%;
-    border-radius: 30% 20% 0% 10%;
     width: 100%;
-    /* Ocupa toda a largura do fundo */
-    right: 0;
+    border-radius: 20% 10% 0% 5%;
+    filter: blur(6px);
   }
 
-  /* === Ajustes da Seção Produtos === */
-  .products-grid,
-  #pcsGamer {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .pcGamer,
-  .noteGamer {
-    /* Permite duas colunas de produto */
-    width: calc(50% - 12px);
-    padding: 15px;
-    /* Reduz o padding interno do card */
-  }
-
-  .noteGamer img,
-  .pcGamer img {
-    height: 200px;
-    /* Diminui a altura da imagem do produto para caber melhor */
+  /* Produtos (1 coluna) */
+  .noteGamer,
+  .pcGamer {
+    width: 100%;
+    /* 1 coluna */
+    max-width: 350px;
+    /* Limite de largura para não ficar muito largo */
   }
 }
