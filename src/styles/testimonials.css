@@ -19,22 +19,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  /* Reduzido o gap */
+  gap: clamp(20px, 5vw, 40px);
+  /* Responsivo */
   padding: 80px 8%;
   /* Mantém o padding da seção */
 }
 
 #testimonial_avatar-empresa {
-  width: 450px;
-  /* Levemente reduzido */
+  width: clamp(300px, 40vw, 450px);
+  /* Responsivo */
   height: auto;
   object-fit: contain;
 }
 
 #testimonials .section-subtitle {
-  font-size: 2.5rem;
-  /* Ajustado para melhor hierarquia */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  /* Responsivo */
   margin-top: 10px;
 }
 
@@ -56,18 +56,18 @@
   display: flex;
   align-items: flex-start;
   /* Alinha o avatar e o texto no topo */
-  gap: 20px;
+  gap: clamp(12px, 3vw, 20px);
   background-color: var(--color-neutral-0);
-  padding: 20px;
-  /* Aumentado o padding */
+  padding: clamp(15px, 3vw, 20px);
+  /* Responsivo */
   border-radius: 12px;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
 
 .feedback-avatar {
-  min-width: 80px;
-  /* Ajustado para manter o tamanho no mobile */
-  height: 80px;
+  min-width: clamp(60px, 12vw, 80px);
+  /* Responsivo */
+  height: clamp(60px, 12vw, 80px);
   border-radius: 50%;
   object-fit: cover;
 }
@@ -95,11 +95,13 @@
 
 /* ===== MEDIA QUERIES (testimonials.css) ===== */
 
-/* Tablet (Abaixo de 1170px) */
-@media screen and (max-width: 1170px) {
+/* Tablet (768px até 1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
   #testimonials {
     flex-direction: column;
     text-align: center;
+    gap: 30px;
+    padding: 60px 5%;
   }
 
   #testimonials_content {
@@ -117,24 +119,44 @@
   #testimonials .section-subtitle {
     font-size: 2rem;
   }
+
+  .feedback {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .feedback-content p:first-child {
+    flex-direction: column;
+    /* Empilha nome e estrelas */
+    gap: 5px;
+  }
 }
 
-/* Mobile (Abaixo de 600px) */
-@media screen and (max-width: 600px) {
+/* Mobile (Máximo de 767px) */
+@media screen and (max-width: 767px) {
   #testimonials {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
     padding: 50px 5%;
   }
 
   #testimonials .section-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   #testimonials .section-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   #testimonials_content {
     width: 100%;
+  }
+
+  #testimonial_avatar-empresa {
+    display: none;
+    /* Oculta a imagem da empresa no mobile */
   }
 
   .feedback {
@@ -147,5 +169,9 @@
     flex-direction: column;
     /* Empilha nome e estrelas */
     gap: 5px;
+  }
+
+  .feedback-content p:last-child {
+    font-size: 0.85rem;
   }
 }

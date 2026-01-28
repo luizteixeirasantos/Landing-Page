@@ -4,8 +4,6 @@
 @import url("header.css");
 @import url("testimonials.css");
 @import url("footer.css");
-@import url("hamburgerMenu.css");
-/* Mantido para conter a lógica do menu mobile */
 
 /* ===== Variáveis de Cores (Opcional, mas recomendado) ===== */
 :root {
@@ -55,10 +53,11 @@ img {
   background: var(--color-primary);
   color: var(--color-light);
   border: none;
-  padding: 8px 16px;
-  /* Aumentado para melhor toque */
+  padding: clamp(8px, 1vw, 10px) clamp(12px, 1.5vw, 16px);
+  /* Responsivo */
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  /* Responsivo */
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
@@ -84,8 +83,8 @@ section {
 }
 
 .section-title {
-  font-size: 2.5rem;
-  /* Ajuste leve no tamanho */
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  /* Responsivo com min e max */
   font-weight: 700;
   margin-bottom: 10px;
   text-align: center;
@@ -137,8 +136,10 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 /* Social media buttons */
 .social-media-buttons {
   display: flex;
-  gap: 12px;
-  /* Reduzido o gap para melhor acomodação */
+  gap: clamp(8px, 2vw, 12px);
+  /* Responsivo */
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .social-media-buttons a {
@@ -173,7 +174,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  gap: clamp(20px, 4vw, 40px);
+  /* Responsivo */
   min-height: 100vh;
   background: linear-gradient(135deg,
       var(--color-home-background-start),
@@ -188,15 +190,16 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 }
 
 #cta .title {
-  font-size: 4rem;
-  /* Levemente reduzido para caber melhor */
+  font-size: clamp(2rem, 5vw, 4rem);
+  /* Responsivo */
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
 #cta .description {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  /* Responsivo */
   margin-bottom: 30px;
   max-width: 500px;
   /* Limita a largura para melhor leitura */
@@ -251,7 +254,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   justify-content: center;
   flex-wrap: wrap;
   /* Adicionado para quebrar a linha em telas menores */
-  gap: 24px;
+  gap: clamp(16px, 3vw, 24px);
+  /* Responsivo */
   margin-top: 32px;
 }
 
@@ -264,15 +268,15 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   gap: 12px;
   /* Espaçamento reduzido */
   width: calc(25% - 18px);
-  /* 4 colunas */
-  min-width: 250px;
+  /* 4 colunas - desktop */
+  min-width: 220px;
   /* Garante que o card não fique muito estreito */
   padding: 20px;
   background-color: var(--color-neutral-0);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .noteGamer:hover,
@@ -282,8 +286,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 
 .noteGamer img,
 .pcGamer img {
-  height: 250px;
-  /* Altura da imagem ajustada */
+  height: clamp(180px, 25vw, 250px);
+  /* Responsivo */
   object-fit: contain;
   /* Garante que a imagem caiba sem cortar */
   margin: 0 auto 15px auto;
@@ -297,7 +301,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 }
 
 .computer-title {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  /* Responsivo */
   margin-bottom: 5px;
 }
 
@@ -305,7 +310,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 .pcGamer-description {
   color: var(--color-light-gray);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  /* Responsivo */
   flex-grow: 1;
   /* Permite que ocupe o espaço necessário */
 }
@@ -335,7 +341,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 .noteGamer-price span,
 .pcGamer-price span {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  /* Responsivo */
   color: var(--color-light);
 }
 
@@ -371,8 +378,8 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
 
 /* ===== MEDIA QUERIES (style.css) ===== */
 
-/* Tablet (Mínimo de 768px - Max de 1170px) */
-@media screen and (max-width: 1170px) {
+/* Tablet (Mínimo de 768px - Max de 1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
 
   /* Seções */
   section {
@@ -384,37 +391,11 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   }
 
   /* Home */
-  #cta .title {
-    font-size: 3.5rem;
-  }
-
-  /* Produtos (2 colunas) */
-  .noteGamer,
-  .pcGamer {
-    width: calc(50% - 12px);
-    /* 2 colunas com espaço de 24px entre elas */
-  }
-}
-
-/* Mobile (Máximo de 767px) */
-@media screen and (max-width: 1170px) {
-
-  /* Menu Hamburger - Visível apenas em mobile */
-  .menu-hamburger {
-    display: block;
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  /* Home */
   #home {
     flex-direction: column;
     text-align: center;
-    padding-top: 120px;
+    padding-top: 100px;
     /* Espaço para o header */
-    min-height: auto;
   }
 
   #cta {
@@ -422,12 +403,10 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   }
 
   #cta .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     white-space: normal;
-    /* Desabilita a animação de largura */
     animation: none;
     line-height: 1.2;
-    margin-bottom: 10px;
   }
 
   #cta .description {
@@ -447,7 +426,7 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
   }
 
   #banner img {
-    max-width: 80%;
+    max-width: 85%;
     height: auto;
   }
 
@@ -457,12 +436,117 @@ A largura `width: 100ch` estava travando o layout em telas menores. */
     filter: blur(6px);
   }
 
+  /* Produtos (2 colunas) */
+  .noteGamer,
+  .pcGamer {
+    width: calc(50% - 12px);
+    /* 2 colunas com espaço de 24px entre elas */
+  }
+}
+
+/* Mobile (Máximo de 767px) */
+@media screen and (max-width: 767px) {
+
+  /* Seções */
+  section {
+    padding: 50px 5%;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Menu Hamburger - Visível apenas em mobile */
+  .menu-hamburger {
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Home */
+  #home {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    /* Espaço para o header */
+    min-height: auto;
+  }
+
+  #cta {
+    text-align: center;
+    min-width: auto;
+  }
+
+  #cta .title {
+    font-size: 2rem;
+    white-space: normal;
+    /* Desabilita a animação de largura */
+    animation: none;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    width: auto;
+  }
+
+  #cta .description {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .social-media-buttons {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  #banner {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    min-width: auto;
+  }
+
+  #banner img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .shape {
+    width: 100%;
+    border-radius: 20% 10% 0% 5%;
+    filter: blur(6px);
+    height: 80% !important;
+  }
+
   /* Produtos (1 coluna) */
   .noteGamer,
   .pcGamer {
     width: 100%;
     /* 1 coluna */
-    max-width: 350px;
-    /* Limite de largura para não ficar muito largo */
+    max-width: 100%;
+    /* Ocupa toda a largura */
+    margin: 0 auto;
+  }
+
+  .noteGamer-price,
+  .pcGamer-price {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .noteGamer-price span,
+  .pcGamer-price span {
+    flex: 1 1 100%;
+  }
+
+  .noteGamer-price .btn-default,
+  .pcGamer-price .btn-default {
+    flex: 1;
+    margin-left: 0 !important;
   }
 }

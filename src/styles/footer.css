@@ -22,24 +22,44 @@ footer {
 #footer_items {
   display: flex;
   justify-content: space-between;
-  padding: 20px 8%;
-  /* Ajustado o padding */
+  padding: clamp(15px, 3vw, 20px) clamp(20px, 5%, 8%);
+  /* Responsivo */
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 #copyright {
   color: var(--color-light);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-/* O estilo para social-media-buttons está em style.css */
-
 /* ===== MEDIA QUERIES (footer.css) ===== */
+
+/* Tablet (768px até 1023px) */
+@media screen and (max-width: 1023px) {
+  #footer_items {
+    flex-direction: row;
+    gap: 15px;
+    padding: clamp(15px, 2vw, 20px) 5%;
+  }
+
+  #copyright {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile (Máximo de 767px) */
 @media screen and (max-width: 767px) {
   #footer_items {
     flex-direction: column;
     gap: 15px;
-    padding: 20px 5%;
+    padding: 15px 5%;
+  }
+
+  #copyright {
+    text-align: center;
+    font-size: 0.8rem;
   }
 }

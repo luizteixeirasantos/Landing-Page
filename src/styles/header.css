@@ -32,15 +32,13 @@ header {
   display: flex;
   align-items: center;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
-
+  flex-wrap: nowrap;
   justify-content: space-between;
+  gap: clamp(10px, 2vw, 30px);
 }
 
 #nav_logo {
-  font-size: 24px;
+  font-size: clamp(1.4rem, 3vw, 24px);
   color: var(--color-light);
   font-weight: 700;
 }
@@ -48,14 +46,17 @@ header {
 #nav_list {
   display: flex;
   list-style: none;
-  gap: 24px;
-  /* Aumentado o gap para melhor espaçamento */
+  gap: clamp(8px, 1.5vw, 24px);
+  flex: 1;
+  justify-content: center;
+  margin: 0 clamp(10px, 2vw, 20px);
 }
 
 .nav-item a {
   text-decoration: none;
   color: var(--color-light);
   font-weight: 500;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
@@ -70,47 +71,127 @@ header {
 
 .botoesSite {
   display: flex;
-  gap: 12px;
+  gap: clamp(6px, 0.8vw, 10px);
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .botoesSite .btn-default {
-  padding: 10px 12px;
-  font-size: 0.9rem;
+  padding: clamp(6px, 0.8vw, 8px) clamp(8px, 1.2vw, 12px);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  gap: clamp(4px, 0.5vw, 6px);
 }
 
 /* Oculta o botão mobile e o menu mobile no desktop */
 .menu-hamburger {
-  display: none;
+  display: none !important;
 }
 
 /* ===== MEDIA QUERIES (header.css) ===== */
 
-/* Tablet e Mobile (Abaixo de 1170px) */
-@media screen and (max-width: 1170px) {
-
-  /* Esconde o menu de desktop e botões */
-  #nav_list,
-  .botoesSite {
-    display: none;
-  }
-
-  /* Exibe o menu hamburger (definido em style.css/mobile) */
-  .menu-hamburger {
-    display: block;
-    /* Garante que o menu hamburger esteja visível */
-  }
-}
-
-/* Mobile (Abaixo de 767px) - Ajustes finais */
-@media screen and (max-width: 767px) {
+/* Tablet Grande (1024px até 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 1024px) {
   header {
-    padding: 15px 5%;
-    /* Reduz o padding */
+    padding: 15px 6%;
   }
 
   #nav_logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
-  /* O menu hamburger está sendo tratado no hamburgerMenu.css e style.css */
+  #nav_list {
+    gap: 12px;
+  }
+
+  .nav-item a {
+    font-size: 0.85rem;
+  }
+
+  .botoesSite .btn-default strong {
+    display: none;
+  }
+
+  .botoesSite .btn-default {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Tablet (768px até 1023px) */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  header {
+    padding: 12px 4%;
+  }
+
+  #nav_logo {
+    font-size: 1.2rem;
+  }
+
+  #nav_list {
+    gap: 8px;
+  }
+
+  .nav-item a {
+    font-size: 0.75rem;
+    padding: 5px;
+  }
+
+  .botoesSite {
+    gap: 4px;
+  }
+
+  .botoesSite .btn-default strong {
+    display: none;
+  }
+
+  .botoesSite .btn-default {
+    padding: 5px 6px;
+    font-size: 0.6rem;
+  }
+
+  .botoesSite .btn-default i {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile (Máximo de 767px) */
+@media screen and (max-width: 767px) {
+  header {
+    padding: 10px 3%;
+  }
+
+  #navbar {
+    gap: 8px;
+  }
+
+  #nav_logo {
+    font-size: 1rem;
+  }
+
+  #nav_list {
+    gap: 6px;
+    margin: 0 8px;
+  }
+
+  .nav-item a {
+    font-size: 0.65rem;
+    padding: 3px;
+  }
+
+  .botoesSite {
+    gap: 3px;
+  }
+
+  .botoesSite .btn-default {
+    padding: 4px 5px;
+    font-size: 0.55rem;
+  }
+
+  .botoesSite .btn-default strong {
+    display: none;
+  }
+
+  .botoesSite .btn-default i {
+    font-size: 0.8rem;
+  }
 }

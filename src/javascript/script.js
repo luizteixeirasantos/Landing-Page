@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  $("#mobile_btn").on("click", function () {
-    $("#mobile_menu").toggleClass("active");
-    $("#mobile_btn").find("i").toggleClass("fa-x");
-  });
-
   const sections = $("section");
   const navItems = $(".nav-item");
 
@@ -72,9 +67,6 @@ $(document).ready(function () {
     distance: "20%",
   });
 });
-
-const teste = 1;
-
 // Restart efeito de digitação
 function restartAnimation(element, animationName) {
   element.style.animation = "none";
@@ -98,16 +90,11 @@ document.querySelectorAll(".title, .description").forEach((el) => {
   observer.observe(el);
 });
 
-const menuToggle = document.getElementById("menu-toggle");
-
-const mobileMenuLinks = document.querySelectorAll(
-  '#menu-mobile-links a[href^="#"]'
-);
-
-mobileMenuLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (menuToggle) {
+// Fecha o menu ao clicar no overlay
+if (overlay && menuToggle) {
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
       menuToggle.checked = false;
     }
   });
-});
+}
